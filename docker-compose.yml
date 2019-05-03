@@ -1,0 +1,18 @@
+version: "3"
+services:
+  web:
+    image: myflaskyhello
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "0.3"
+          memory: "150M"
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+networks:
+  webnet:
